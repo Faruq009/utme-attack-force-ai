@@ -12,7 +12,7 @@ function showMessage(feature) {
     feature + " will be available in the next stage.";
 }
 
-function sendQuestion() {
+async function sendQuestion() {
   const input = document.getElementById("questionInput");
   const response = document.getElementById("response");
 
@@ -28,10 +28,28 @@ function sendQuestion() {
     return;
   }
 
-  response.textContent =
-    "Subject: " + selectedSubject +
-    "\n\nQuestion received: " + question +
-    "\n\nThe real AI Tutor will answer this here once the AI backend is connected.";
+  response.textContent = "Connecting to your AI Tutor...";
+
+  try {
+    const result = await fetch("http://localhost:8000/ask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        subject: selectedSubject,
+        question: question
+      })
+    });
+
+    const data = await result.json();
+
+    response.textContent = data.answer;
+
+  } catch (error) {
+    response.textContent =
+      "The AI Tutor backend is not connected yet.";
+  }
 }
 
 function startVoice() {
@@ -58,8 +76,6 @@ function startVoice() {
 }
 
 function photoSelected() {
-  const response = document.getElementById("response");
-
-  response.textContent =
+  document.getElementById("response").textContent =
     "Photo received. Image understanding will be connected to the AI backend next.";
 }
