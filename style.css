@@ -1,21 +1,82 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f4f7f5;
-  padding: 30px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7f5;
+  color: #17231c;
+  line-height: 1.6;
+}
+
+header {
+  background: #0b6b3a;
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 16px;
+}
+
+main {
+  width: 92%;
+  max-width: 700px;
+  margin: 25px auto;
+}
+
+section {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-bottom: 15px;
   color: #0b6b3a;
 }
 
 button {
-  display: block;
-  width: 90%;
-  max-width: 350px;
-  margin: 10px auto;
-  padding: 15px;
-  font-size: 16px;
+  width: 100%;
+  padding: 14px;
+  margin: 7px 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: #0b6b3a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 23px;
+  }
+
+  section {
+    padding: 18px;
+  }
 }
