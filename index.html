@@ -19,42 +19,94 @@
   <main>
 
     <section>
-      <h2>Choose a Subject</h2>
+      <h2>Choose Your Subject</h2>
 
-      <button onclick="chooseSubject('Use of English')">Use of English</button>
-<button onclick="chooseSubject('Physics')">Physics</button>
-<button onclick="chooseSubject('Chemistry')">Chemistry</button>
-<button onclick="chooseSubject('Mathematics')">Mathematics</button>
-<button onclick="chooseSubject('Biology')">Biology</button>
-    
+      <button onclick="chooseSubject('Use of English')">
+        📖 Use of English
+      </button>
+
+      <button onclick="chooseSubject('Physics')">
+        ⚡ Physics
+      </button>
+
+      <button onclick="chooseSubject('Chemistry')">
+        🧪 Chemistry
+      </button>
+
+      <button onclick="chooseSubject('Mathematics')">
+        📐 Mathematics
+      </button>
+
+      <button onclick="chooseSubject('Biology')">
+        🧬 Biology
+      </button>
     </section>
 
     <section>
-      <h2>What do you want to do?</h2>
+      <h2>Learning</h2>
 
-      <button>📚 Lessons</button>
-      <button>📝 Practice</button>
-      <button>🎯 UTME Mock</button>
-      <button>📊 My Progress</button>
-      <button>🔥 Daily Attack</button>
+      <button onclick="showMessage('Lessons')">
+        📚 Lessons
+      </button>
+
+      <button onclick="showMessage('Practice')">
+        📝 Practice
+      </button>
+
+      <button onclick="showMessage('UTME Mock')">
+        🎯 UTME Mock
+      </button>
+
+      <button onclick="showMessage('My Progress')">
+        📊 My Progress
+      </button>
+
+      <button onclick="showMessage('Daily Attack')">
+        🔥 Daily Attack
+      </button>
     </section>
 
     <section>
       <h2>🤖 AI Tutor</h2>
 
-      <p>Ask me a question by typing, speaking, or sending a photo.</p>
+      <p id="selectedSubject">
+        Select a subject to begin.
+      </p>
 
       <input
+        id="questionInput"
         type="text"
         placeholder="Ask your AI Tutor..."
       >
 
-      <button>🎤 Voice</button>
-      <button>📷 Photo</button>
-      <button>Send</button>
+      <button onclick="sendQuestion()">
+        Send Question
+      </button>
+
+      <button onclick="startVoice()">
+        🎤 Voice Input
+      </button>
+
+      <button onclick="document.getElementById('photoInput').click()">
+        📷 Send Photo
+      </button>
+
+      <input
+        id="photoInput"
+        type="file"
+        accept="image/*"
+        style="display: none;"
+        onchange="photoSelected()"
+      >
+
+      <div id="response">
+        Your AI Tutor's answer will appear here.
+      </div>
     </section>
 
   </main>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
