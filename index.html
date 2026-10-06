@@ -3,10 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="style.css">
-
+  <meta name="theme-color" content="#071a12">
+  <meta name="description" content="UTME Attack Force AI Tutor - Learn. Practice. Attack UTME.">
   <title>UTME Attack Force AI Tutor</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #071a12;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0b2a1d;
+      padding: 25px 15px;
+      text-align: center;
+      border-bottom: 2px solid #19a463;
+    }
+
+    header h1 {
+      color: #35d98a;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #d8f5e7;
+      font-size: 15px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      background: #06140f;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav button {
+      background: #123c2a;
+      color: white;
+      border: 1px solid #1a9d61;
+      border-radius: 8px;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background: #1a9d61;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 15px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    .hero h2 {
+      color: #35d98a;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #c9e9da;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      color: #35d98a;
+      font-size: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #0d2a1e;
+      border: 1px solid #185f3e;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #35d98a;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #cce8da;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #19a463;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #24c478;
+    }
+
+    .payment {
+      margin-top: 35px;
+      background: #102f22;
+      border: 2px solid #19a463;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .payment h2 {
+      color: #35d98a;
+      margin-bottom: 12px;
+    }
+
+    .payment strong {
+      color: #ffffff;
+    }
+
+    .payment p {
+      margin: 7px 0;
+      color: #d8f5e7;
+    }
+
+    .access-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: #071a12;
+      border-radius: 10px;
+      border: 1px solid #236d49;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #347e5c;
+      background: #f7fffb;
+      color: #111;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 7px;
+      display: none;
+    }
+
+    .ai-box {
+      background: #0d2a1e;
+      border: 1px solid #185f3e;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    .ai-response {
+      min-height: 100px;
+      background: #071a12;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 12px;
+      color: #dff8eb;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 35px;
+      background: #06140f;
+      color: #a9cdbc;
+      font-size: 13px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #a9cdbc;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 23px;
+      }
+
+      .hero h2 {
+        font-size: 21px;
+      }
+
+      nav button {
+        font-size: 12px;
+        padding: 8px 9px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -16,152 +243,523 @@
     <p>Learn. Practice. Attack UTME.</p>
   </header>
 
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('subjects')">Subjects</button>
+    <button onclick="showSection('lessons')">Lessons</button>
+    <button onclick="showSection('practice')">Practice</button>
+    <button onclick="showSection('mock')">UTME Mock</button>
+    <button onclick="showSection('progress')">My Progress</button>
+    <button onclick="showSection('daily')">Daily Attack</button>
+    <button onclick="showSection('ai')">AI Tutor</button>
+  </nav>
+
   <main>
-    <section id="access">
-  <h2>🔐 Access Your AI Tutor</h2>
 
-  <p id="accessStatus">
-    🔒 Access code required.
-  </p>
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <h2>Welcome to UTME Attack Force</h2>
+        <p>
+          Your study companion for serious UTME preparation.
+          Learn smarter, practise questions, test yourself and attack UTME with confidence.
+        </p>
+      </div>
 
-  <input
-    id="accessCode"
-    type="text"
-    maxlength="5"
-    placeholder="Enter access code"
-  >
+      <div class="grid">
+        <div class="card">
+          <h3>📚 Lessons</h3>
+          <p>Study important topics and build your understanding.</p>
+          <button class="btn" onclick="showSection('lessons')">Start Learning</button>
+        </div>
 
-  <button onclick="activateAccess()">
-    Activate Access
-  </button>
+        <div class="card">
+          <h3>⚔️ Practice</h3>
+          <p>Practise questions and improve your speed and accuracy.</p>
+          <button class="btn" onclick="showSection('practice')">Practise Now</button>
+        </div>
 
-  <p id="accessMessage"></p>
-    </section>
-<a href="#payment">
-  💰 Paid Access — ₦1,000
-</a>
-    <section>
-      <h2>Choose Your Subject</h2>
+        <div class="card">
+          <h3>📝 UTME Mock</h3>
+          <p>Test yourself with UTME-style examination practice.</p>
+          <button class="btn" onclick="showSection('mock')">Take Mock</button>
+        </div>
 
-      <button onclick="chooseSubject('Use of English')">
-        📖 Use of English
-      </button>
-
-      <button onclick="chooseSubject('Physics')">
-        ⚡ Physics
-      </button>
-
-      <button onclick="chooseSubject('Chemistry')">
-        🧪 Chemistry
-      </button>
-
-      <button onclick="chooseSubject('Mathematics')">
-        📐 Mathematics
-      </button>
-
-      <button onclick="chooseSubject('Biology')">
-        🧬 Biology
-      </button>
-    </section>
-
-    <section>
-      <h2>Learning</h2>
-
-      <button onclick="showMessage('Lessons')">
-        📚 Lessons
-      </button>
-
-      <button onclick="showMessage('Practice')">
-        📝 Practice
-      </button>
-
-      <button onclick="showMessage('UTME Mock')">
-        🎯 UTME Mock
-      </button>
-
-      <button onclick="showMessage('My Progress')">
-        📊 My Progress
-      </button>
-
-      <button onclick="showMessage('Daily Attack')">
-        🔥 Daily Attack
-      </button>
-    </section>
-
-    <section>
-      <h2>🤖 AI Tutor</h2>
-
-      <p id="selectedSubject">
-        Select a subject to begin.
-      </p>
-
-      <input
-        id="questionInput"
-        type="text"
-        placeholder="Ask your AI Tutor..."
-      >
-
-      <button onclick="sendQuestion()">
-        Send Question
-      </button>
-
-      <button onclick="startVoice()">
-        🎤 Voice Input
-      </button>
-
-      <button onclick="document.getElementById('photoInput').click()">
-        📷 Send Photo
-      </button>
-
-      <input
-        id="photoInput"
-        type="file"
-        accept="image/*"
-        style="display: none;"
-        onchange="photoSelected()"
-      >
-
-      <div id="response">
-        Your AI Tutor's answer will appear here.
+        <div class="card">
+          <h3>🤖 AI Tutor</h3>
+          <p>Ask questions and get help while studying.</p>
+          <button class="btn" onclick="showSection('ai')">Ask AI</button>
+        </div>
       </div>
     </section>
 
-    <!-- PAID ACCESS -->
-    <section id="payment">
-      <h2>💰 Paid Access — ₦1,000</h2>
+
+    <!-- SUBJECTS -->
+    <section id="subjects" style="display:none;">
+      <h2 class="section-title">Choose Your Subject</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>📖 Use of English</h3>
+          <p>Grammar, comprehension, vocabulary and UTME practice.</p>
+          <button class="btn" onclick="selectSubject('Use of English')">Open</button>
+        </div>
+
+        <div class="card">
+          <h3>⚡ Physics</h3>
+          <p>Mechanics, electricity, waves, heat and more.</p>
+          <button class="btn" onclick="selectSubject('Physics')">Open</button>
+        </div>
+
+        <div class="card">
+          <h3>🧪 Chemistry</h3>
+          <p>Atoms, bonding, reactions, organic chemistry and more.</p>
+          <button class="btn" onclick="selectSubject('Chemistry')">Open</button>
+        </div>
+
+        <div class="card">
+          <h3>📐 Mathematics</h3>
+          <p>Algebra, geometry, statistics, calculus and UTME questions.</p>
+          <button class="btn" onclick="selectSubject('Mathematics')">Open</button>
+        </div>
+
+        <div class="card">
+          <h3>🧬 Biology</h3>
+          <p>Cells, genetics, ecology, evolution and human biology.</p>
+          <button class="btn" onclick="selectSubject('Biology')">Open</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- LESSONS -->
+    <section id="lessons" style="display:none;">
+      <h2 class="section-title">Lessons</h2>
+
+      <div class="card">
+        <h3>📚 Start a Lesson</h3>
+        <p>
+          Select a subject from the Subjects section to begin studying.
+        </p>
+        <button class="btn" onclick="showSection('subjects')">
+          Choose Subject
+        </button>
+      </div>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section id="practice" style="display:none;">
+      <h2 class="section-title">Practice</h2>
+
+      <div class="card">
+        <h3>🎯 Practice Questions</h3>
+        <p>
+          Practice will contain UTME-style questions with answers and explanations.
+        </p>
+
+        <button class="btn" onclick="startPractice()">
+          Start Practice
+        </button>
+
+        <div id="practiceMessage" class="message"></div>
+      </div>
+    </section>
+
+
+    <!-- MOCK -->
+    <section id="mock" style="display:none;">
+      <h2 class="section-title">UTME Mock Examination</h2>
+
+      <div class="card">
+        <h3>📝 Full UTME Practice</h3>
+        <p>
+          Prepare yourself with timed UTME-style mock examinations.
+        </p>
+
+        <button class="btn" onclick="startMock()">
+          Start Mock
+        </button>
+
+        <div id="mockMessage" class="message"></div>
+      </div>
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section id="progress" style="display:none;">
+      <h2 class="section-title">My Progress</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Questions Practised</h3>
+          <p id="questionsCount">0</p>
+        </div>
+
+        <div class="card">
+          <h3>Lessons Completed</h3>
+          <p id="lessonsCount">0</p>
+        </div>
+
+        <div class="card">
+          <h3>Mock Exams</h3>
+          <p id="mockCount">0</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- DAILY ATTACK -->
+    <section id="daily" style="display:none;">
+      <h2 class="section-title">⚔️ Daily Attack</h2>
+
+      <div class="card">
+        <h3>Today's Challenge</h3>
+        <p>
+          Stay consistent. Attack at least one topic or question set every day.
+        </p>
+
+        <button class="btn" onclick="dailyAttack()">
+          Start Today's Attack
+        </button>
+
+        <div id="dailyMessage" class="message"></div>
+      </div>
+    </section>
+
+
+    <!-- AI TUTOR -->
+    <section id="ai" style="display:none;">
+      <h2 class="section-title">🤖 AI Tutor</h2>
+
+      <div class="ai-box">
+        <p>
+          Ask the AI Tutor a question about your UTME studies.
+        </p>
+
+        <textarea
+          id="aiQuestion"
+          placeholder="Ask your question here..."
+        ></textarea>
+
+        <button class="btn" onclick="askAI()">
+          Ask AI Tutor
+        </button>
+
+        <button class="btn" onclick="startVoice()">
+          🎤 Voice
+        </button>
+
+        <button class="btn" onclick="photoHelp()">
+          📷 Photo
+        </button>
+
+        <div id="aiResponse" class="ai-response">
+          Your AI Tutor response will appear here.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAYMENT / ACCESS -->
+    <section class="payment">
+
+      <h2>🔐 Get 1-Year Access</h2>
 
       <p>
-        Get <strong>1 year access</strong> to UTME Attack Force AI Tutor.
+        Unlock the full UTME Attack Force AI Tutor for
+        <strong>₦1,000 per year.</strong>
       </p>
-
-      <h3>Payment Details</h3>
-
-      <p><strong>Bank:</strong> PalmPay</p>
-      <p><strong>Account Name:</strong> Abdulrasaq Faruq</p>
-      <p><strong>Account Number:</strong> 9169032781</p>
-
-      <h3>After Payment</h3>
 
       <p>
-        After making payment, send your payment proof on WhatsApp:
+        Payment method: <strong>PalmPay</strong>
       </p>
-
-      <a
-        href="https://wa.me/2349169032781"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📱 DM on WhatsApp: +234 916 903 2781
-      </a>
 
       <p>
-        After payment is confirmed, your 1-year access code will be sent manually.
+        Account name: <strong>Abdulrasaq Faruq</strong>
       </p>
+
+      <p>
+        PalmPay number: <strong>9169032781</strong>
+      </p>
+
+      <p>
+        After payment, contact us on WhatsApp:
+        <strong>+2349169032781</strong>
+      </p>
+
+      <p class="small">
+        Access codes are manually sent after payment.
+      </p>
+
+      <div class="access-box">
+
+        <h3>Enter Your Access Code</h3>
+
+        <input
+          type="text"
+          id="accessCode"
+          maxlength="5"
+          placeholder="Enter your code"
+          autocomplete="off"
+        >
+
+        <button class="btn" onclick="checkAccessCode()">
+          Activate Access
+        </button>
+
+        <div id="accessMessage" class="message"></div>
+
+      </div>
+
     </section>
 
   </main>
 
-  <script src="script.js"></script>
+
+  <footer>
+    <p>© 2026 UTME Attack Force AI Tutor</p>
+    <p>Learn. Practice. Attack UTME.</p>
+  </footer>
+
+
+  <script>
+
+    let stats = {
+      questions: 0,
+      lessons: 0,
+      mocks: 0
+    };
+
+    function showSection(sectionId) {
+
+      const sections = [
+        "home",
+        "subjects",
+        "lessons",
+        "practice",
+        "mock",
+        "progress",
+        "daily",
+        "ai"
+      ];
+
+      sections.forEach(function(id) {
+        const section = document.getElementById(id);
+
+        if (section) {
+          section.style.display =
+            id === sectionId ? "block" : "none";
+        }
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function selectSubject(subject) {
+
+      alert(
+        "You selected " +
+        subject +
+        ". Lessons and practice for this subject will appear here."
+      );
+
+      showSection("lessons");
+    }
+
+
+    function startPractice() {
+
+      stats.questions++;
+
+      document.getElementById("questionsCount").textContent =
+        stats.questions;
+
+      const box = document.getElementById("practiceMessage");
+
+      box.style.display = "block";
+      box.textContent =
+        "Practice mode is ready. Your question system will be connected to the backend.";
+    }
+
+
+    function startMock() {
+
+      stats.mocks++;
+
+      document.getElementById("mockCount").textContent =
+        stats.mocks;
+
+      const box = document.getElementById("mockMessage");
+
+      box.style.display = "block";
+      box.textContent =
+        "UTME Mock mode is ready. The full question engine will be connected to the backend.";
+    }
+
+
+    function dailyAttack() {
+
+      const box = document.getElementById("dailyMessage");
+
+      box.style.display = "block";
+      box.textContent =
+        "🔥 Daily Attack started! Choose a subject and begin practising.";
+    }
+
+
+    function askAI() {
+
+      const question =
+        document.getElementById("aiQuestion").value.trim();
+
+      const response =
+        document.getElementById("aiResponse");
+
+      if (!question) {
+
+        response.textContent =
+          "Please type a question first.";
+
+        return;
+      }
+
+      response.textContent =
+        "Your AI Tutor backend will answer this question when the AI API is connected.\n\nQuestion: " +
+        question;
+    }
+
+
+    function startVoice() {
+
+      const response =
+        document.getElementById("aiResponse");
+
+      if (
+        "webkitSpeechRecognition" in window ||
+        "SpeechRecognition" in window
+      ) {
+
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        const recognition =
+          new SpeechRecognition();
+
+        recognition.lang = "en-NG";
+
+        recognition.start();
+
+        recognition.onresult = function(event) {
+
+          document.getElementById("aiQuestion").value =
+            event.results[0][0].transcript;
+
+          response.textContent =
+            "Voice question captured. Tap 'Ask AI Tutor'.";
+        };
+
+      } else {
+
+        response.textContent =
+          "Voice input is not supported by this browser.";
+      }
+    }
+
+
+    function photoHelp() {
+
+      const response =
+        document.getElementById("aiResponse");
+
+      response.textContent =
+        "Photo question support will be connected to the AI backend.";
+    }
+
+
+    async function checkAccessCode() {
+
+      const code =
+        document.getElementById("accessCode")
+          .value
+          .trim()
+          .toUpperCase();
+
+      const message =
+        document.getElementById("accessMessage");
+
+      if (!code) {
+
+        message.style.display = "block";
+        message.textContent =
+          "Please enter your access code.";
+
+        return;
+      }
+
+      if (code.length > 5) {
+
+        message.style.display = "block";
+        message.textContent =
+          "Access code must not be longer than 5 characters.";
+
+        return;
+      }
+
+      /*
+        IMPORTANT:
+        Real access-code verification will be handled
+        securely by the Python backend.
+
+        The backend will read:
+        backend/access_codes.json
+
+        Do NOT put the real paid/free codes directly
+        inside this HTML file.
+      */
+
+      message.style.display = "block";
+      message.textContent =
+        "Access code received. Secure backend verification will be connected next.";
+    }
+
+
+    // Load saved progress
+    try {
+
+      const saved =
+        localStorage.getItem("utmeAttackProgress");
+
+      if (saved) {
+
+        stats = JSON.parse(saved);
+
+        document.getElementById("questionsCount").textContent =
+          stats.questions;
+
+        document.getElementById("lessonsCount").textContent =
+          stats.lessons;
+
+        document.getElementById("mockCount").textContent =
+          stats.mocks;
+      }
+
+    } catch (error) {
+
+      console.log("Progress could not be loaded.");
+
+    }
+
+  </script>
 
 </body>
 </html>
